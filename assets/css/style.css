@@ -1520,6 +1520,13 @@ footer.white-wrapper .social-links li a {
     }
 }
 
+@media(max-width:766px) {
+    header .intro-text .intro-heading img {
+        max-width: 150px;
+        margin: 0 auto;
+    }
+}
+
 @media(min-width:767px) {
     header .intro-text {
     }
