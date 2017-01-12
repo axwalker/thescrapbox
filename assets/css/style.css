@@ -305,6 +305,15 @@ body {
   line-height: 32px;
 }
 
+.press-link > a {
+  color: #3E6382;
+}
+
+.press-img {
+  max-height: 200px;
+  max-width: 100%;
+}
+
 .white {
     color: #fff;
 }

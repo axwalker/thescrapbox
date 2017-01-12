@@ -9,10 +9,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="assets/img/ico/favicon.ico">
-    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/ico/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/ico/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/ico/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" href="assets/img/ico/apple-touch-icon-57x57.png">
 
     <title>{{ site.title }}</title>
 
@@ -60,6 +56,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#about" class="page-scroll">About</a></li>
                     <li><a href="#the-menu" class="page-scroll">The Menu</a></li>
+                    <li><a href="#press" class="page-scroll">Press</a></li>
                     <li><a href="#contact" class="page-scroll">Contact us</a></li>
                 </ul>
             </div>
@@ -85,21 +82,15 @@
         </div>
     </header>
 
-    {% for section in site.data.sections %}
-    <li>
-        <a href="#{{ section.slug }}" class="page-scroll">{{ section.title }}</a>
-    </li>
-    {% endfor %}
-
     <section id="about" class="top-border-me">
         <div class="section-inner">
 
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12 text-center mb100">
-                        <h2 class="section-heading">A <span class="theme-accent-color">Warm</span> Welcome</h2>
+                    <div class="col-lg-12 text-center mb50">
+                        <h2 class="section-heading">About The <span class="theme-accent-color">Scrap Box</span></h2>
                         <hr class="thin-hr">
-                        <h3 class="section-subheading secondary-font">Were very happy to see you.</h3>
+                        <h3 class="section-subheading secondary-font">Our philosophy</h3>
                     </div>
                 </div>
             </div>
@@ -108,15 +99,24 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-5 col-md-offset-1">
-                            <h2 class="mb50">About <span class="theme-accent-color">The Scrap Box</span></h2>
-                            <p class="lead">Fish don't fry in the kitchen and beans don't burn on the grill. Took a whole lotta tryin' just to get up that hill. Love exciting and new. Come aboard were expecting you. Love life's sweetest reward Let it flow it floats back to you.</p>
-                            <p>Here he comes Here comes Speed Racer. He's a demon on wheels. Believe it or not I'm walking on air. I never thought I could feel so free. Flying away on a wing and a prayer.</p>
+                            <h2 class="mb50">Our <span class="theme-accent-color">Scraps</span></h2>
+                            <blockquote>
+                            {% for quote in site.data.about.scraps.quotes %}
+                                <p>{{ quote }}</p>
+                            {% endfor %}
+                            </blockquote>
+
+                            {% for line in site.data.about.scraps.copy %}
+                                <p class="lead">{{ line }}</p>
+                            {% endfor %}
+
                         </div>
 
                         <div class="col-md-5">
-                            <h2 class="mb50">Latest <span class="theme-accent-color">Awards</span></h2>
-                            <p class="lead">Fish don't fry in the kitchen and beans don't burn on the grill. Took a whole lotta tryin' just to get up that hill. Love exciting and new. Come aboard were expecting you. Love life's sweetest reward Let it flow it floats back to you.</p>
-                            <p>Here he comes Here comes Speed Racer. He's a demon on wheels. Believe it or not I'm walking on air. I never thought I could feel so free. Flying away on a wing and a prayer.</p>
+                            <h2 class="mb50">Our <span class="theme-accent-color">Dripping</span></h2>
+                            {% for line in site.data.about.dripping.copy %}
+                                <p class="lead">{{ line }}</p>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -126,13 +126,12 @@
         </div>
     </section>
 
-
     <section id="the-menu">
         <div class="section-inner">
 
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12 text-center mb100">
+                    <div class="col-lg-12 text-center mb50">
                         <h2 class="section-heading">Browse <span class="theme-accent-color">The</span> Menu</h2>
                         <hr class="thin-hr">
                         <h3 class="section-subheading secondary-font">Your tastebuds will thank you.</h3>
@@ -281,15 +280,59 @@
         </div>
     </section>
 
+    <section id="press">
+        <div class="section-inner">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center mb50">
+                        <h2 class="section-heading"><span class="theme-accent-color">Press</span></h2>
+                        <hr class="thin-hr">
+                        <h3 class="section-subheading secondary-font">What they're saying about us</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            <p class="lead press-link">
+                                {{ site.data.press.article.publisher }}:
+                                <a href="{{ site.data.press.article.title }}">{{ site.data.press.article.title }}</a>
+                            </p>
+
+                            <blockquote>
+                                {% for quote in site.data.press.article.quotes %}
+                                <p>{{ quote }}</p>
+                                {% endfor %}
+                            </blockquote>
+
+                        </div>
+
+                        <div class="col-md-5 col-md-offset-1">
+                            <img src="{{ site.data.press.images[0] }}" class="press-img center-block">
+                        </div>
+
+                        <div class="col-md-5">
+                            <img src="{{ site.data.press.images[1] }}" class="press-img center-block">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
 
     <section id="contact" class="dark-wrapper opaqued parallax" data-parallax="scroll" data-image-src="assets/img/bg2.jpg" data-speed="0.8">
         <div class="section-inner">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12 text-center mb100">
-                        <h2 class="section-heading">Book <span class="theme-accent-color">Your</span> Table</h2>
+                    <div class="col-lg-12 text-center mb50">
+                        <h2 class="section-heading">Come <span class="theme-accent-color">Visit</span> Us</h2>
                         <hr class="thin-hr">
-                        <h3 class="section-subheading secondary-font">Satisfaction, every time.</h3>
+                        <h3 class="section-subheading secondary-font">Satisfaction, every time</h3>
                     </div>
                 </div>
             </div>
@@ -349,10 +392,6 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <section>
-        <div id="mapwrapper"></div>
     </section>
 
     <div id="bottom-frame"></div>

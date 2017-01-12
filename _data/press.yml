@@ -1,0 +1,12 @@
+article:
+  publisher: The Press
+  title: The Scrap Box voted best fish and chips in York
+  url: http://www.yorkpress.co.uk/news/14935376.Voted_the_best_fish_and_chips_in_York
+  quotes:
+    - It’s official - we can reveal the best fish and chip shop in York.
+    - Out of 28 nominated fish and chip shops, readers have voted The Scrap Box, off Hull Road, near Dunnington as The Press Best.
+    - It's a triumph for the restaurant, which opened four months ago and already has many loyal customers.
+
+images:
+  - assets/img/press-best-badge.png
+  - assets/img/press-best-staff.jpg
