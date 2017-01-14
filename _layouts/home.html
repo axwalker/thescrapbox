@@ -141,140 +141,25 @@
 
             <div class="container">
 
-                <div class="row mb100">
-                    <div class="col-md-4 wow fadeIn">
-                        <h2 class="mb50"><span class="heading-font text-uppercase">Fresh Pizza</span></h2>
-                        <h3>Lorem Ipsum <span class="theme-accent-color">$8.95</span></h3>
-                        <p>No phone no lights no motor car not a single luxury. Like Robinson Crusoe it's primitive as can be.</p>
-                        <h3>Lorem Ipsum <span class="theme-accent-color">$8.95</span></h3>
-                        <p>No phone no lights no motor car not a single luxury. Like Robinson Crusoe it's primitive as can be.</p>
-                        <h3>Lorem Ipsum <span class="theme-accent-color">$8.95</span></h3>
-                        <p>No phone no lights no motor car not a single luxury. Like Robinson Crusoe it's primitive as can be.</p>
-                        <h3>Lorem Ipsum <span class="theme-accent-color">$8.95</span></h3>
-                        <p>No phone no lights no motor car not a single luxury. Like Robinson Crusoe it's primitive as can be.</p>
-                    </div>
-
-                    <div class="col-md-4 wow fadeIn">
-                        <h2 class="mb50"><span class="heading-font text-uppercase">Famility Favourites</span></h2>
-                        <h3>Lorem Ipsum <span class="theme-accent-color">$8.95</span></h3>
-                        <p>No phone no lights no motor car not a single luxury. Like Robinson Crusoe it's primitive as can be.</p>
-                        <h3>Lorem Ipsum <span class="theme-accent-color">$8.95</span></h3>
-                        <p>No phone no lights no motor car not a single luxury. Like Robinson Crusoe it's primitive as can be.</p>
-                        <h3>Lorem Ipsum <span class="theme-accent-color">$8.95</span></h3>
-                        <p>No phone no lights no motor car not a single luxury. Like Robinson Crusoe it's primitive as can be.</p>
-                        <h3>Lorem Ipsum <span class="theme-accent-color">$8.95</span></h3>
-                        <p>No phone no lights no motor car not a single luxury. Like Robinson Crusoe it's primitive as can be.</p>
-                    </div>
-
-                    <div class="col-md-4 wow fadeIn">
-                        <h2 class="mb50"><span class="heading-font text-uppercase">Catch of the Day</span></h2>
-                        <h3>Lorem Ipsum <span class="theme-accent-color">$8.95</span></h3>
-                        <p>No phone no lights no motor car not a single luxury. Like Robinson Crusoe it's primitive as can be.</p>
-                        <h3>Lorem Ipsum <span class="theme-accent-color">$8.95</span></h3>
-                        <p>No phone no lights no motor car not a single luxury. Like Robinson Crusoe it's primitive as can be.</p>
-                        <h3>Lorem Ipsum <span class="theme-accent-color">$8.95</span></h3>
-                        <p>No phone no lights no motor car not a single luxury. Like Robinson Crusoe it's primitive as can be.</p>
-                        <h3>Lorem Ipsum <span class="theme-accent-color">$8.95</span></h3>
-                        <p>No phone no lights no motor car not a single luxury. Like Robinson Crusoe it's primitive as can be.</p>
-                    </div>
-                </div>
-
                 <div class="row">
-                    <div class="col-md-6 wow fadeIn">
-                        <h2 class="mb50"><span class="heading-font text-uppercase">Starters</span></h2>
-                        <div class="food-menu-item">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="assets/img/food/meal4.jpg" class="img-responsive">
-                                </div>
-                                <div class="col-xs-9">
-                                    <h3>Lorem Ipsum <span class="theme-accent-color">$8.95</span></h3>
-                                    <p>No phone no lights no motor car not a single luxury. Like Robinson Crusoe it's primitive as can be. Like Robinson Crusoe it's primitive as can be</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="food-menu-item">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="assets/img/food/meal1.jpg" class="img-responsive">
-                                </div>
-                                <div class="col-xs-9">
-                                    <h3>Lorem Ipsum <span class="theme-accent-color">$8.95</span></h3>
-                                    <p>No phone no lights no motor car not a single luxury. Like Robinson Crusoe it's primitive as can be. Like Robinson Crusoe it's primitive as can be</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="food-menu-item">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="assets/img/food/meal2.jpg" class="img-responsive">
-                                </div>
-                                <div class="col-xs-9">
-                                    <h3>Lorem Ipsum <span class="theme-accent-color">$8.95</span></h3>
-                                    <p>No phone no lights no motor car not a single luxury. Like Robinson Crusoe it's primitive as can be. Like Robinson Crusoe it's primitive as can be</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="food-menu-item">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="assets/img/food/meal3.jpg" class="img-responsive">
-                                </div>
-                                <div class="col-xs-9">
-                                    <h3>Lorem Ipsum <span class="theme-accent-color">$8.95</span></h3>
-                                    <p>No phone no lights no motor car not a single luxury. Like Robinson Crusoe it's primitive as can be. Like Robinson Crusoe it's primitive as can be</p>
-                                </div>
-                            </div>
-                        </div>
+                    {% for section in site.data.menu %}
+                    <div class="col-md-4 mb30 wow fadeIn">
+                        <h2><span class="heading-font text-uppercase theme-accent-color">{{ section.title }}</span></h2>
+                        {% for item in section.items %}
+                            {% if item.price %}
+                            <h3>{{ item.title }}<small class="theme-accent-color"> {{item.price}}</small></h3>
+                            {% elsif item.prices %}
+                            <h3>
+                                {{ item.title }}<br>
+                                {% for price in item.prices %}
+                                  <small>{{ price.size }}: <span class="theme-accent-color"> {{ price.price }}</span></small>
+                                {% endfor %}
+                            </h3>
+                            {% endif %}
+                            <p>{{ item.description }}</p>
+                        {% endfor %}
                     </div>
-
-                    <div class="col-md-6 wow fadeIn">
-                        <h2 class="mb50"><span class="heading-font text-uppercase">Main Course</span></h2>
-                        <div class="food-menu-item">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="assets/img/food/meal3.jpg" class="img-responsive">
-                                </div>
-                                <div class="col-xs-9">
-                                    <h3>Lorem Ipsum <span class="theme-accent-color">$8.95</span></h3>
-                                    <p>No phone no lights no motor car not a single luxury. Like Robinson Crusoe it's primitive as can be. Like Robinson Crusoe it's primitive as can be</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="food-menu-item">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="assets/img/food/meal5.jpg" class="img-responsive">
-                                </div>
-                                <div class="col-xs-9">
-                                    <h3>Lorem Ipsum <span class="theme-accent-color">$8.95</span></h3>
-                                    <p>No phone no lights no motor car not a single luxury. Like Robinson Crusoe it's primitive as can be. Like Robinson Crusoe it's primitive as can be</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="food-menu-item">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="assets/img/food/meal6.jpg" class="img-responsive">
-                                </div>
-                                <div class="col-xs-9">
-                                    <h3>Lorem Ipsum <span class="theme-accent-color">$8.95</span></h3>
-                                    <p>No phone no lights no motor car not a single luxury. Like Robinson Crusoe it's primitive as can be. Like Robinson Crusoe it's primitive as can be</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="food-menu-item">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="assets/img/food/meal7.jpg" class="img-responsive">
-                                </div>
-                                <div class="col-xs-9">
-                                    <h3>Lorem Ipsum <span class="theme-accent-color">$8.95</span></h3>
-                                    <p>No phone no lights no motor car not a single luxury. Like Robinson Crusoe it's primitive as can be. Like Robinson Crusoe it's primitive as can be</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
