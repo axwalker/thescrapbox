@@ -1,3 +1,7 @@
-- assets/img/bg1.jpg
-- assets/img/bg2.jpg
-- assets/img/bg3.jpg
+header:
+  - assets/img/bg1.jpg
+  - assets/img/bg2.jpg
+  - assets/img/bg3.jpg
+  - assets/img/bg4.JPG
+  - assets/img/bg5.JPG
+  - assets/img/bg6.JPG

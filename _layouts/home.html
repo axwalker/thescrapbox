@@ -107,7 +107,11 @@
                             </blockquote>
 
                             {% for line in site.data.about.scraps.copy %}
-                                <p class="lead">{{ line }}</p>
+                                {% if line.image %}
+                                    <img class="img-responsive mb30" src="{{ line.image }}">
+                                {% else %}
+                                    <p class="lead">{{ line }}</p>
+                                {% endif %}
                             {% endfor %}
 
                         </div>
@@ -115,7 +119,11 @@
                         <div class="col-md-5">
                             <h2 class="mb50">Our <span class="theme-accent-color">Dripping</span></h2>
                             {% for line in site.data.about.dripping.copy %}
-                                <p class="lead">{{ line }}</p>
+                                {% if line.image %}
+                                    <img class="img-responsive mb30" src="{{ line.image }}">
+                                {% else %}
+                                    <p class="lead">{{ line }}</p>
+                                {% endif %}
                             {% endfor %}
                         </div>
                     </div>
@@ -180,29 +188,32 @@
 
             <div>
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md-10 col-md-offset-1">
-                            <p class="lead press-link">
-                                {{ site.data.press.article.publisher }}:
-                                <a href="{{ site.data.press.article.title }}">{{ site.data.press.article.title }}</a>
-                            </p>
+                    {% for article in site.data.press %}
+                        <div class="row mb30">
+                            <div class="col-md-10 col-md-offset-1">
+                                <h4 class="press-link">
+                                    {{ article.publisher }}:
+                                    <a href="{{ article.url }}">{{ article.title }}</a>
+                                </h4>
 
-                            <blockquote>
-                                {% for quote in site.data.press.article.quotes %}
-                                <p>{{ quote }}</p>
-                                {% endfor %}
-                            </blockquote>
+                                <blockquote>
+                                    {% for quote in article.quotes %}
+                                    <p>{{ quote }}</p>
+                                    {% endfor %}
+                                </blockquote>
+                            </div>
 
+                            {% if article.images %}
+                                <div class="col-md-5 col-md-offset-1">
+                                    <img src="{{ article.images[0] }}" class="press-img center-block">
+                                </div>
+
+                                <div class="col-md-5">
+                                    <img src="{{ article.images[1] }}" class="press-img center-block">
+                                </div>
+                            {% endif %}
                         </div>
-
-                        <div class="col-md-5 col-md-offset-1">
-                            <img src="{{ site.data.press.images[0] }}" class="press-img center-block">
-                        </div>
-
-                        <div class="col-md-5">
-                            <img src="{{ site.data.press.images[1] }}" class="press-img center-block">
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
 
             </div>
@@ -210,7 +221,7 @@
         </div>
     </section>
 
-    <section id="contact" class="dark-wrapper opaqued parallax" data-parallax="scroll" data-image-src="assets/img/bg2.jpg" data-speed="0.8">
+    <section id="contact" class="dark-wrapper opaqued parallax" data-parallax="scroll" data-image-src="assets/img/contact1.JPG" data-speed="0.8">
         <div class="section-inner">
             <div class="container">
                 <div class="row">
@@ -232,13 +243,6 @@
                         {% endfor %}
                         </p>
                         <p class="lead">{{ site.data.contact.phone }}<br>
-                        <ul class="list-inline social-links wow fadeIn" data-wow-delay="0.2s">
-                            <li>
-                                <a href="https://www.facebook.com/scrapboxyork/" target="_blank">
-                                    <i class="fa fa-facebook"></i>&nbsp;/scrapboxyork
-                                </a>
-                            </li>
-                        </ul>
                     </div>
 
                     <div class="col-md-5 col-sm-7 wow fadeIn">
@@ -259,6 +263,22 @@
                                 </ul>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="col-md-10 col-md-offset-1 wow fadeIn">
+                        <h3 class="mb30">Social</h3>
+                            <ul class="list-inline social-links wow fadeIn" data-wow-delay="0.2s">
+                                <li>
+                                    <a href="https://www.facebook.com/scrapboxyork/" target="_blank">
+                                        <i class="fa fa-facebook"></i>&nbsp;/scrapboxyork
+                                    </a>
+                                </li><br>
+                                <li>
+                                    <a href="https://www.tripadvisor.co.uk/Restaurant_Review-g2155137-d10682196-Reviews-The_Scrap_Box-Dunnington_North_Yorkshire_England.html" target="_blank">
+                                        tripadvisor&nbsp;/The Scrap Box
+                                    </a>
+                                </li>
+                            </ul>
                     </div>
                 </div>
 
@@ -308,7 +328,7 @@
         'use strict';
 
         jQuery('#headerwrap').backstretch([
-            {% for img in site.data.slideshow %}
+            {% for img in site.data.slideshow.header %}
                 '{{ img }}',
             {% endfor %}
         ], {duration: 8000, fade: 500});
