@@ -62,7 +62,7 @@
                     <li x-show="withNewMenu"><a href="#">
                         <span data-glf-cuid="9d51464a-c36e-4b8b-989e-2ae22a40dbad" data-glf-ruid="932c1f2c-1fad-41cc-8d0f-50853e8957c6" >
                             Order online
-                       </span>
+                        </span>
                     </a></li>
                 </ul>
             </div>
@@ -80,6 +80,35 @@
                 </div>
                 <div class="intro-text text-center smoothie col-xs-6 col-sm-10 match-height">
                     <div class="intro-heading wow fadeIn heading-font" data-wow-delay="0.8s"><img src="assets/img/intro-logo.png"></div>
+
+                    <style>
+                        .order-button {
+                            font-family: 'Bree Serif', "Helvetica Neue", Helvetica, Arial, sans-serif;
+                            font-size: 16px;
+                            background-color: #C97A58;
+                            color: white;
+                            margin-top: 20px;
+                            text-transform: uppercase;
+                        }
+                        @media (min-width: 768px) {
+                            .order-button {
+                                font-size: 20px;
+                                padding: 12px 16px;
+                            }
+                        }
+                        .order-button:hover {
+                            color: white;
+                        }
+                    </style>
+
+                    <span 
+                      x-show="withNewMenu"
+                      class="btn order-button" 
+                      data-glf-cuid="9d51464a-c36e-4b8b-989e-2ae22a40dbad" 
+                      data-glf-ruid="932c1f2c-1fad-41cc-8d0f-50853e8957c6"
+                    >
+                        Order online
+                    </span>
                 </div>
                 <div class="col-xs-3 col-sm-1 pull-right text-center slider-control match-height">
                     <a href="#" class="next-bs-slide vertical-center wow fadeInRight" data-wow-delay="0.8s"><i class="fa fa-long-arrow-right"></i></a>
