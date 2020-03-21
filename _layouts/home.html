@@ -23,10 +23,11 @@
     <!-- Custom Fonts -->
     <link href="assets/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/pe-icons.css" rel="stylesheet">
-
+    <script src="https://www.fbgcdn.com/embedder/js/ewm2.js" defer async ></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
 </head>
 
-<body id="page-top" class="regular-navigation">
+<body id="page-top" class="regular-navigation" x-data="{ withNewMenu: location.href.includes('?withNewMenu=true')}">
 
 
 <div class="master-wrapper">
@@ -55,9 +56,14 @@
             <div class="collapse navbar-collapse" id="main-navigation">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#about" class="page-scroll">About</a></li>
-                    <li><a href="#the-menu" class="page-scroll">The Menu</a></li>
+                    <li x-show="!withNewMenu"><a href="#the-menu" class="page-scroll">The Menu</a></li>
                     <li><a href="#press" class="page-scroll">Press</a></li>
                     <li><a href="#contact" class="page-scroll">Contact us</a></li>
+                    <li x-show="withNewMenu"><a href="#">
+                        <span data-glf-cuid="9d51464a-c36e-4b8b-989e-2ae22a40dbad" data-glf-ruid="932c1f2c-1fad-41cc-8d0f-50853e8957c6" >
+                            Order online
+                       </span>
+                    </a></li>
                 </ul>
             </div>
 
@@ -134,7 +140,7 @@
         </div>
     </section>
 
-    <section id="the-menu">
+    <section id="the-menu" x-show="!withNewMenu">
         <div class="section-inner">
 
             <div class="container">
