@@ -190,13 +190,10 @@
                         <h2><span class="heading-font text-uppercase theme-accent-color">{{ section.title }}</span></h2>
                         {% for item in section.items %}
                             {% if item.price %}
-                            <h3>{{ item.title }}<small class="theme-accent-color"> {{item.price}}</small></h3>
+                            <h3>{{ item.title }}
                             {% elsif item.prices %}
                             <h3>
                                 {{ item.title }}<br>
-                                {% for price in item.prices %}
-                                  <small>{{ price.size }}: <span class="theme-accent-color"> {{ price.price }}</span></small>
-                                {% endfor %}
                             </h3>
                             {% endif %}
                             <p>{{ item.description }}</p>
