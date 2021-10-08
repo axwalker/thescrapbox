@@ -10,20 +10,6 @@
         - size: L
           price: £7.25
 
-    - title: Battered Chicken & Chips
-      description: Marinated in buttermilk
-      prices:
-        - size: 1PC
-          price: £3.65
-        - size: 2PC
-          price: £4.65
-        - size: 3PC
-          price: £5.65
-
-    - title: Pie & Chips
-      description: Sourced daily from butcher
-      price: £4.10
-
     - title: Fish Bites & Chips
       description: Cut from haddock fillet
       price: £5.25
@@ -54,16 +40,7 @@
     - title: Fish Pattie
       price: £2.00
 
-    - title: Potato Scollop
-      price: £0.50
-
-    - title: Spam Fritter
-      price: £1.50
-
-    - title: Pea Fritter
-      price: £1.50
-
-    - title: Chicken Nugets
+    - title: Chicken Nuggets
       price: £2.20
 
     - title: Pea, Curry, Gravy
@@ -74,9 +51,6 @@
 
     - title: Bread Bun
       price: £0.70
-
-    - title: Battered Mars Bar
-      price: £2.00
 
 
 - title: Drinks
