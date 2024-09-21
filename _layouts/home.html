@@ -19,15 +19,15 @@
 
     <!-- Custom CSS -->
     <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/tailwind-out.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="assets/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/pe-icons.css" rel="stylesheet">
     <script src="https://www.fbgcdn.com/embedder/js/ewm2.js" defer async ></script>
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
 </head>
 
-<body id="page-top" class="regular-navigation" x-data="{ withNewMenu: location.href.includes('?withNewMenu=true')}">
+<body id="page-top" class="regular-navigation">
 
 
 <div class="master-wrapper">
@@ -56,14 +56,10 @@
             <div class="collapse navbar-collapse" id="main-navigation">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#about" class="page-scroll">About</a></li>
-                    <li x-show="!withNewMenu"><a href="#the-menu" class="page-scroll">The Menu</a></li>
+                    <li><a href="#the-menu" class="page-scroll">Menu</a></li>
+                    <li><a href="#community" class="page-scroll">Community</a></li>
                     <li><a href="#press" class="page-scroll">Press</a></li>
-                    <li><a href="#contact" class="page-scroll">Contact us</a></li>
-                    <li x-show="withNewMenu"><a href="#">
-                        <span data-glf-cuid="9d51464a-c36e-4b8b-989e-2ae22a40dbad" data-glf-ruid="932c1f2c-1fad-41cc-8d0f-50853e8957c6" >
-                            Order online
-                        </span>
-                    </a></li>
+                    <li><a href="#contact" class="page-scroll">Contact</a></li>
                 </ul>
             </div>
 
@@ -101,14 +97,15 @@
                         }
                     </style>
 
-                    <span 
-                      x-show="withNewMenu"
-                      class="btn order-button" 
-                      data-glf-cuid="9d51464a-c36e-4b8b-989e-2ae22a40dbad" 
-                      data-glf-ruid="932c1f2c-1fad-41cc-8d0f-50853e8957c6"
-                    >
-                        Order online
-                    </span>
+
+                    <div class="flex justify-center mt-10">
+                        <a href="https://scrapbox.touchtakeaway.net/"
+                        class="py-4 px-6 pr-9 bg-[#C97A58] heading-font text-white text-4xl rounded-md flex items-center gap-2 -mx-12 hover:text-blue-100 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="size-12" viewBox="0 0 32 32"><path fill="currentColor" d="M13.67 2c-.53 0-.95.42-.95.94v3.7a.49.49 0 0 1-.98 0V2.98c0-.52-.4-.97-.91-.98a.94.94 0 0 0-.97.94v3.7a.49.49 0 0 1-.98 0V2.98c0-.52-.4-.97-.91-.98a.94.94 0 0 0-.97.94v6.32a3.8 3.8 0 0 0 1.503 3.034c.847.62.847 2.617.847 2.617v13.8c0 .71.58 1.29 1.29 1.29h.32c.71 0 1.29-.58 1.29-1.29V14.9s0-2.037.834-2.607A3.8 3.8 0 0 0 14.6 9.251V2.94a.924.924 0 0 0-.93-.94m9.39 0c1.24 0 2.24 1 2.24 2.24v13.65l-.01-.003v10.814c0 .71-.58 1.29-1.29 1.29h-.32c-.71 0-1.29-.58-1.29-1.29V16.837a4.35 4.35 0 0 1-2.55-3.966V5.22C19.83 3.44 21.28 2 23.06 2"/></svg>
+
+                            Click and Collect
+                        </a>
+                    </div>
                 </div>
                 <div class="col-xs-3 col-sm-1 pull-right text-center slider-control match-height">
                     <a href="#" class="next-bs-slide vertical-center wow fadeInRight" data-wow-delay="0.8s"><i class="fa fa-long-arrow-right"></i></a>
@@ -130,46 +127,74 @@
                 </div>
             </div>
 
-            <div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-5 col-md-offset-1">
-                            <h2 class="mb50">Our <span class="theme-accent-color">Scraps</span></h2>
-                            <blockquote>
-                            {% for quote in site.data.about.scraps.quotes %}
-                                <p>{{ quote }}</p>
-                            {% endfor %}
-                            </blockquote>
+            <div class="max-w-[1000px] mx-auto mt-12 max-md:px-5">
+                <div class="max-md:hidden md:grid grid-cols-2 gap-x-16 gap-y-12 items-start">
+                    <div class="grid gap-12">
+                    {% for section in site.data.about %}
+                        {% assign counter = forloop.index %}
+                        {% assign mod = forloop.index | modulo: 2 %}
+                        {% if mod == 1 %}
+                            <div>
+                                <h2 class="mb-8 md:mb-10">{{ section.title }}</h2>
 
-                            {% for line in site.data.about.scraps.copy %}
+                                {% for line in section.copy %}
                                 {% if line.image %}
-                                    <img class="img-responsive mb30" src="{{ line.image }}">
+                                <img class="img-responsive mb30" src="{{ line.image }}">
                                 {% else %}
-                                    <p class="lead">{{ line }}</p>
+                                <p class="lead">{{ line }}</p>
                                 {% endif %}
-                            {% endfor %}
+                                {% endfor %}
 
-                        </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    </div>
 
-                        <div class="col-md-5">
-                            <h2 class="mb50">Our <span class="theme-accent-color">Dripping</span></h2>
-                            {% for line in site.data.about.dripping.copy %}
+                    <div class="grid gap-12">
+                    {% for section in site.data.about %}
+                        {% assign counter = forloop.index %}
+                        {% assign mod = forloop.index | modulo: 2 %}
+                        {% if mod == 0 %}
+                            <div>
+                                <h2 class="mb-8 md:mb-10">{{ section.title }}</h2>
+
+                                {% for line in section.copy %}
                                 {% if line.image %}
-                                    <img class="img-responsive mb30" src="{{ line.image }}">
+                                <img class="img-responsive mb30" src="{{ line.image }}">
                                 {% else %}
-                                    <p class="lead">{{ line }}</p>
+                                <p class="lead">{{ line }}</p>
                                 {% endif %}
-                            {% endfor %}
-                        </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                     </div>
                 </div>
 
+                <div class="md:hidden grid grid-cols-1 gap-y-12">
+                    <div class="grid gap-12">
+                    {% for section in site.data.about %}
+                        <div>
+                            <h2 class="mb-8 md:mb-10">{{ section.title }}</h2>
+
+                            {% for line in section.copy %}
+                            {% if line.image %}
+                            <img class="img-responsive mb30" src="{{ line.image }}">
+                            {% else %}
+                            <p class="lead">{{ line }}</p>
+                            {% endif %}
+                            {% endfor %}
+
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
             </div>
 
         </div>
     </section>
 
-    <section id="the-menu" x-show="!withNewMenu">
+    <section id="the-menu">
         <div class="section-inner">
 
             <div class="container">
@@ -182,26 +207,43 @@
                 </div>
             </div>
 
-            <div class="container">
-
-                <div class="row">
+            <div class="container max-w-[1000px] mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-16">
                     {% for section in site.data.menu %}
-                    <div class="col-md-4 mb30 wow fadeIn">
-                        <h2><span class="heading-font text-uppercase theme-accent-color">{{ section.title }}</span></h2>
+                    <div class="wow fadeIn grid gap-y-3 md:mx-auto">
+                        <h2 class="mb-3 -mt-4"><span class="heading-font text-uppercase theme-accent-color">{{ section.title }}</span></h2>
                         {% for item in section.items %}
-                            {% if item.price %}
-                            <h3>{{ item.title }}
-                            {% elsif item.prices %}
-                            <h3>
-                                {{ item.title }}<br>
-                            </h3>
-                            {% endif %}
-                            <p>{{ item.description }}</p>
+                            <h3 class="my-0">{{ item.title }}
+                            <p class="font-sans font-light normal-case">{{ item.description }}</p>
                         {% endfor %}
                     </div>
                     {% endfor %}
                 </div>
             </div>
+        </div>
+    </section>
+
+
+    <section id="community" class="top-border-me">
+        <div class="section-inner">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center mb50">
+                      <h2 class="section-heading theme-accent-color">Community</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-[1000px] mx-auto mt-12 max-md:px-5">
+                <p class="lead">
+                    We take pride in being everyone’s local chip shop and we try to give back where we can. Every year we sponsor Dunnington Cricket Club and we’ve also bought the footballs this season for Wilberfoss Mavericks U15’s.
+                </p>
+                <p class="lead">
+                    We are also willing to serve for local events – we’ve catered for a wedding and many large functions. Get in touch if you’d like to discuss any local events that need feeding!
+                </p>
+            </div>
+
         </div>
     </section>
 
@@ -248,6 +290,32 @@
                     {% endfor %}
                 </div>
 
+            </div>
+
+        </div>
+    </section>
+
+    <section id="awards">
+        <div class="section-inner">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center mb50">
+                        <h2 class="section-heading"><span class="theme-accent-color">Awards / Affiliates</span></h2>
+                        <!-- <hr class="thin-hr">
+                        <h3 class="section-subheading secondary-font">What they're saying about us</h3> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="container max-w-[1000px] mx-auto">
+                <div class="md:grid grid-cols-5 gap-16 [&>img]:size-32 md:[&>img]:size-48 [&>img]:object-contain flex flex-wrap justify-center align-middle">
+                    <img src="assets/img/nfff.jpg" />
+                    <img src="assets/img/50-best-takeaways.webp" />
+                    <img src="assets/img/thumbnail_hygene.jpg" />
+                    <img src="assets/img/thumbnail_press_best.jpg" />
+                    <img src="assets/img/thumbnail_quality_award.jpg" />
+                </div>
             </div>
 
         </div>
@@ -303,6 +371,11 @@
                                 <li>
                                     <a href="https://www.facebook.com/scrapboxyork/" target="_blank">
                                         <i class="fa fa-facebook"></i>&nbsp;/scrapboxyork
+                                    </a>
+                                </li><br>
+                                <li>
+                                    <a href="https://www.instagram.com/thescrapbox_york" target="_blank">
+                                        <i class="fa fa-instagram"></i>&nbsp;@thescrapbox_york
                                     </a>
                                 </li><br>
                                 <li>

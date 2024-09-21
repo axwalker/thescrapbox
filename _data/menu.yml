@@ -1,77 +1,32 @@
 - title: Mains
   items:
     - title: Fish & Chips
-      description: Prime haddock fillet
-      prices:
-        - size: S
-          price: £5.25
-        - size: M
-          price: £6.25
-        - size: L
-          price: £7.25
+      description: Prime haddock or cod fillet. Large or mini haddock also available
 
     - title: Fish Bites & Chips
       description: Cut from haddock fillet
-      price: £5.25
+
+    - title: Scampi & Chips
 
     - title: Sausage & Chips
-      price: £3.65
 
     - title: Kids Box
-      description: Sausage or fish bites or chicken nuggets
-      price: £3.60
 
 
 - title: Sides
   items:
     - title: Chips
-      prices:
-        - size: M
-          price: £2.10
-        - size: L
-          price: £2.65
-
-    - title: Cheesy Chips
-      price: £2.65
 
     - title: Chip Butty
-      price: £2.65
 
     - title: Fish Pattie
-      price: £2.00
+
+    - title: Spam Fritter
 
     - title: Chicken Nuggets
-      price: £2.20
 
-    - title: Pea, Curry, Gravy
-      price: £1.00
+    - title: Pea, Curry, Gravy, Tartare Sauce
 
     - title: Pickled Onion, Egg
-      price: £0.80
 
     - title: Bread Bun
-      price: £0.70
-
-
-- title: Drinks
-  items:
-    - title: Tea
-      price: £1.50
-
-    - title: Latte, Cappucino
-      price: £2.25
-
-    - title: Americano
-      price: £2.25
-
-    - title: Espresso
-      price: £1.50
-
-    - title: Mocha
-      price: £2.25
-
-    - title: Hot Chocolate
-      price: £2.25
-
-    - title: Cans
-      price: £1.00
